@@ -96,7 +96,7 @@ function App() {
         {gameItems.length > 0 && (
           <div className='flex gap-[10px] justify-center flex-wrap w-[320px] md:w-[540px]'>
             {gameItems.map((item, index) => (
-              <Card key={index} index={index} onClickHandler={onSelectItem} item={item} />
+              <Card key={index} index={index} onClickHandler={onSelectItem} item={item} clickable={clickable} />
             ))}
           </div>
         )}

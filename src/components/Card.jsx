@@ -12,11 +12,12 @@ import sql from '.././assets/img/sql-server.png'
 import swift from '.././assets/img/swift.png'
 
 
-function Card({ item, onClickHandler, index }) {
+function Card({ item, onClickHandler, index, clickable }) {
 
   const [width, setWidth] = useState(100)
 
   const onSelectItem = () => {
+    if (!clickable) return
     onClickHandler(item, index)
     setWidth(0);
     setTimeout(() => {
