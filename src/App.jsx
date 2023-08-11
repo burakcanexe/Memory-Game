@@ -16,6 +16,7 @@ const items = [
 ]
 
 function App() {
+  const [clickable, setClickable] = useState(true)
   const [score, setScore] = useState(0)
   const [clickedItemFirst, setClickedItemFirst] = useState(null)
   const [clickedItemLast, setClickedItemLast] = useState(null)
@@ -41,7 +42,8 @@ function App() {
   }
 
   const onSelectItem = (item, index) => {
-    if ((clickedItemFirst && clickedItemLast) || item.show || item.success) return
+    if ((clickedItemFirst && clickedItemLast) || item.show || item.success || !clickable) return
+    setClickable(false)
     const _gameItems = [...gameItems];
     _gameItems[index].show = true;
     setGameItems(_gameItems);
@@ -77,6 +79,9 @@ function App() {
         setGameItems(_gameItems);
       }, 1000)
     }
+    setTimeout(() => {
+      setClickable(true)
+    }, 1000)
     setClickedItemFirst(null)
     setClickedItemLast(null)
   }
