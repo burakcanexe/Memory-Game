@@ -44,6 +44,9 @@ function App() {
   const onSelectItem = (item, index) => {
     if ((clickedItemFirst && clickedItemLast) || item.show || item.success || !clickable) return
     setClickable(false)
+    setTimeout(() => {
+      setClickable(true)
+    }, 1000)
     const _gameItems = [...gameItems];
     _gameItems[index].show = true;
     setGameItems(_gameItems);
@@ -79,9 +82,6 @@ function App() {
         setGameItems(_gameItems);
       }, 1000)
     }
-    setTimeout(() => {
-      setClickable(true)
-    }, 1000)
     setClickedItemFirst(null)
     setClickedItemLast(null)
   }
